@@ -1,16 +1,16 @@
 import * as React from 'react';
-import '../styles/App.css';
+import '../styles/styles.css';
+import Header from './Header';
+import Search from './Search';
+import WeatherDisplay from './WeatherDisplay';
 
 class App extends React.Component {
   public render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Weather App Base Project</h1>
-        </header>
-        <p>
-          Hopefully one day the weather will show up here :)
-        </p>
+      <div>
+        <Header />
+        <Search />
+        <WeatherDisplay />
       </div>
     );
   }
