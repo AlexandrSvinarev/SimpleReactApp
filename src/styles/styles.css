@@ -27,6 +27,7 @@
   width: 15rem;
 }
 .questionButton button {
-    font-size: 30px;
-    text-transform: none;
+  margin: 20px;
+  font-size: 30px;
+  text-transform: none;
 }
