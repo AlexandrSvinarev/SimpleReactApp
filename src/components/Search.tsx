@@ -1,3 +1,5 @@
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
 import * as React from "react";
 
 interface IProps {
@@ -11,14 +13,19 @@ export default class Search extends React.Component<IProps,{}> {
                 <form onSubmit={this.props.getWeather}>
                     <label>
                         Do I need an umbrella in
-                        <input
+                        <Input
                             className="lineInput"
                             placeholder="Auckland"
                             name="city"
-                        />
+                        />,
+                        <Input
+                            className="lineInput"
+                            placeholder="New Zealand"
+                            name="country"
+                        />?
                     </label>
                     <div className="questionButton">
-                        <p><button>Well, do I?</button></p>
+                        <Button variant='outlined' type='submit'>Well, do I?</Button>
                     </div>
                 </form>
             </div>

@@ -9,16 +9,16 @@ const API_KEY = "a7ab45710f91f90bdb525f3825f7db7f";
 
 class App extends React.Component {
 
-  public getWeather = async (event: Event) => {
+  public getWeather = async (event : any) => {
     event.preventDefault();
-    
+
     // construct API call from the information we got
-    const city : string =  'Auckland'; // should get from form
-    const API_CALL : string = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${API_KEY}`;
-    console.log(API_CALL);
+    const city: string = event.target.elements.city.value;
+    const API_CALL: string = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${API_KEY}`;
+    
     // get weather data
     const call = await fetch(API_CALL);
-    const data : JSON = await call.json();
+    const data: JSON = await call.json();
     console.log(data);
   }
 
