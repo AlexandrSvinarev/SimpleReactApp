@@ -16,7 +16,8 @@ interface IState {
   temp: number,
   condition: string,
   description: string,
-  wind: number
+  wind: number,
+  rain: any // rain is either an empty object or contains the rainfall in last 3 hours
 }
 
 class App extends React.Component<{}, IState> {
@@ -28,6 +29,7 @@ class App extends React.Component<{}, IState> {
       country: "",
       description: "",
       error: "",
+      rain: undefined,
       temp: 0,
       wind: 0
     }
@@ -60,6 +62,7 @@ class App extends React.Component<{}, IState> {
           country: data.city.country,
           description: data.list[0].weather[0].description,
           error: "",
+          rain: data.list[0].rain,
           temp: data.list[0].main.temp,
           wind: data.list[0].wind.speed
         })
@@ -84,6 +87,7 @@ class App extends React.Component<{}, IState> {
           country = {this.state.country}
           error = {this.state.error}
           temp = {this.state.temp}
+          rain = {this.state.rain}
           condition = {this.state.condition}
           description = {this.state.description}
           wind = {this.state.wind}

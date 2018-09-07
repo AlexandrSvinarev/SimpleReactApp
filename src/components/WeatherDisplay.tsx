@@ -1,3 +1,4 @@
+// tslint:disable:no-console
 import * as React from 'react';
 
 interface IProps {
@@ -10,6 +11,7 @@ interface IProps {
     condition: string,
     description: string,
     wind: number
+    rain: any // rain is either an empty object or a number with the rainfall in the last 3 hours
 }
 
 class WeatherDisplay extends React.Component<IProps,{}> {
@@ -26,6 +28,7 @@ class WeatherDisplay extends React.Component<IProps,{}> {
                     {this.props.condition && this.props.description && <p> {this.props.condition}, {this.props.description} </p>}
                     {this.props.temp && <p>Temp: {this.props.temp}</p>}
                     {this.props.wind && <p>Wind speed: {this.props.wind}</p>}
+                {isEmpty(this.props.rain) ? <p>It's not raining</p> : <p>It's raining, rainfall: {this.props.rain['3h']}</p>  }
                 </div>
         }
         return (
@@ -34,6 +37,15 @@ class WeatherDisplay extends React.Component<IProps,{}> {
             </div>
         );
     }
+}
+
+function isEmpty(obj : any) {
+    for (const key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            return false;
+        }
+    }
+    return true;
 }
 
 export default WeatherDisplay;
