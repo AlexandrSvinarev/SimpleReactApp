@@ -25,7 +25,7 @@ export default class Search extends React.Component<IProps,{}> {
                         />?
                     </label>
                     <div className="questionButton">
-                        <Button variant='outlined' type='submit'>Well, do I?</Button>
+                        <Button type='submit'>Well, do I?</Button>
                     </div>
                 </form>
             </div>

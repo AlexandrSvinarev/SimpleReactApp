@@ -4,9 +4,9 @@ import '../styles/styles.css';
 class Header extends React.Component {
     public render() {
         return (
-            <div className="App">
-                <header className="App-header">
-                    <h1 className="App-title">Weather App</h1>
+            <div>
+                <header className="header">
+                    <h1 className="title">Weather App</h1>
                 </header>
             </div>
     );

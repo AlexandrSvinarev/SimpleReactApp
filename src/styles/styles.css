@@ -1,16 +1,17 @@
-.App {
+.wrapper {
   text-align: center;
+  font-size: 20px;
 }
 
-.App-header {
+.header {
   background-color: #222;
   height: 150px;
   padding: 20px;
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+.title {
+  font-size: 40px;
 }
 
 .question {
@@ -24,7 +25,7 @@
 .lineInput {
   text-align: center;
   margin-left: 1rem;
-  width: 15rem;
+  width: 12rem;
 }
 .questionButton button {
   margin: 20px;
