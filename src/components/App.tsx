@@ -1,9 +1,7 @@
-// tslint:disable:no-console
 import * as React from 'react';
 import '../styles/styles.css';
 import Header from './Header';
 import Search from './Search';
-import WeatherDisplay from './WeatherDisplay';
 
 const API_KEY = "a7ab45710f91f90bdb525f3825f7db7f";
 
@@ -11,13 +9,8 @@ interface IState {
   city: string,
   country: string,
   error: string,
-
-  // Weather info:
-  temp: number,
-  condition: string,
-  description: string,
-  wind: number,
-  rain: any // rain is either an empty object or contains the rainfall in last 3 hours
+  isRaining: boolean,
+  submitted: boolean
 }
 
 class App extends React.Component<{}, IState> {
@@ -25,13 +18,10 @@ class App extends React.Component<{}, IState> {
     super(props)
     this.state = {
       city: "",
-      condition: "",
       country: "",
-      description: "",
       error: "",
-      rain: undefined,
-      temp: 0,
-      wind: 0
+      isRaining: false,
+      submitted: false
     }
   }
 
@@ -48,33 +38,43 @@ class App extends React.Component<{}, IState> {
       const call: any = await fetch(API_CALL);
       const data: any = await call.json();
 
-      console.log(data);
-
       if (data.cod === "404") {
+        // Location not found
         this.setState({
           city: "", // lazy fix to clear city
           error: "Location not found",
         })
       } else {
+        // API call works properly!
+        // Use weather condition code to figure out if it is raining
+        const code : number = data.list[0].weather[0].id
         this.setState({
           city: data.city.name,
-          condition: data.list[0].weather[0].main,
           country: data.city.country,
-          description: data.list[0].weather[0].description,
           error: "",
-          rain: data.list[0].rain,
-          temp: data.list[0].main.temp,
-          wind: data.list[0].wind.speed
+          isRaining: code < 600 ? true : false
         })
       }
     } else {
       this.setState({
+        // Form not submitted correctly
         city: "", // lazy fix to clear city
         error: "Please enter a location"
       })
     }
+    this.setState({
+      submitted: true
+    })
+  }
 
-
+  public getWeatherComponent() : any {
+    if(this.state.submitted){
+      if (this.state.error) {
+        return (<p>{this.state.error}</p>)
+      } else {
+        return (this.state.isRaining ? <p>It's raining</p> : <p>It's not raining</p>)
+      }
+    }
   }
 
   public render() {
@@ -82,16 +82,7 @@ class App extends React.Component<{}, IState> {
       <div className="wrapper">
         <Header />
         <Search getWeather={this.getWeather} />
-        <WeatherDisplay
-          city={this.state.city}
-          country = {this.state.country}
-          error = {this.state.error}
-          temp = {this.state.temp}
-          rain = {this.state.rain}
-          condition = {this.state.condition}
-          description = {this.state.description}
-          wind = {this.state.wind}
-        />
+        {this.getWeatherComponent()}
       </div>
     );
   }
