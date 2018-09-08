@@ -24,25 +24,34 @@ interface IDisplayProps {
 }
 
 function Display(props : IDisplayProps) : any {
+    let img;
     let result;
     if(props.isRaining) {
-        result = <div>
-            <img src="http://placehold.it/400x400" alt="umbrella" />
-            <p>Yes, it's raining.</p>
-        </div>
+        img = <img src="http://placehold.it/400x400" alt="umbrella" />
+
+        result = <React.Fragment>
+            <p className="big">Yes,</p>
+            <p>it's raining.</p>
+        </React.Fragment>
     } else {
-        result = <div>
-            <img src="http://placehold.it/400x400" alt="happy sun" />
-            <p>No, it's not raining.</p>
-        </div>
+        img = <img src="http://placehold.it/400x400" alt="sun" />
+        result = <React.Fragment>
+            <p className="big">No,</p>
+            <p>you're good, it's not raining.</p>
+        </React.Fragment>
     }
     return(
-        <div>
-            {result}
-            <p>{props.condition}</p>
-            <p>{props.description}</p>
-            <p>The temperature is {props.temp}&deg;C</p>
-            <p>The wind speed is {props.wind} km/h</p>
+        <div className="results">
+            <div className="left">
+                {img}
+            </div>
+            <div className="right">
+                {result}
+                <p>{props.condition}</p>
+                <p>{props.description}</p>
+                <p>The temperature is {props.temp}&deg;C</p>
+                <p>The wind speed is {props.wind} km/h</p>
+            </div>
         </div>
     );
 }

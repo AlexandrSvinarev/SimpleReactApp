@@ -29,4 +29,4 @@ const Search = (props : IProps) => (
     </div>
 );
 
-export default Search;
+export default Search

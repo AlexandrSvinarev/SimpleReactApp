@@ -79,17 +79,19 @@ class App extends React.Component<{}, IState> {
     return (
       <div className="wrapper">
         <Header />
-        <Search getWeather={this.getWeather} />
-        <WeatherDisplay
-          city        = {this.state.city}
-          country     = {this.state.country}
-          error       = {this.state.error}
-          isRaining   = {this.state.isRaining}
-          temp        = {this.state.temp}
-          condition   = {this.state.condition}
-          description = {this.state.description}
-          wind        = {this.state.wind}
-        />
+        <div className="main">
+          <Search getWeather={this.getWeather} />
+          <WeatherDisplay
+            city        = {this.state.city}
+            country     = {this.state.country}
+            error       = {this.state.error}
+            isRaining   = {this.state.isRaining}
+            temp        = {this.state.temp}
+            condition   = {this.state.condition}
+            description = {this.state.description}
+            wind        = {this.state.wind}
+          />
+        </div>
       </div>
     );
   }
