@@ -1,8 +1,8 @@
 import * as React from 'react';
-import '../styles/styles.css';
-import Header from './Header';
-import Search from './Search';
-import WeatherDisplay from './WeatherDisplay';
+import Header from './components/Header';
+import Search from './components/Search';
+import WeatherDisplay from './components/WeatherDisplay';
+import './styles/styles.css';
 
 const API_KEY = "a7ab45710f91f90bdb525f3825f7db7f";
 
