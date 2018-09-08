@@ -1,4 +1,9 @@
 import * as React from 'react';
+import cloud from '../img/cloud.png'
+import mist from '../img/mist.png';
+import snow from '../img/snow.png';
+import sun from '../img/sun.png';
+import umbrella from '../img/umbrella.png';
 
 interface IProps {
     city: string,
@@ -16,12 +21,68 @@ interface IDisplayProps {
     country: string,
     description: string,
     isRaining: boolean,
-    weatherMessage : string,
+    icon : any,
     tempMessage: string,
+    weatherMessage: string,
     windMessage: string
 }
 
-// LOGIC TO GET WEATHER MESSAGE
+function WeatherIcon(code : number) : any {
+    let src : any;
+    let alt : string;
+    let authorLink: any;
+    if(code >= 200 && code < 300){
+        // thunderstorm
+        src = umbrella
+        alt = "Umbrella icon"
+        authorLink = <a href="https://www.flaticon.com/authors/bogdan-rosu">Bogdan Rosu</a>
+    } else if (code >= 300 && code < 400){
+        // drizzle
+        src = umbrella
+        alt = "Umbrella icon"
+        authorLink = <a href="https://www.flaticon.com/authors/bogdan-rosu">Bogdan Rosu</a>
+    } else if (code >= 500 && code < 600){
+        // rain
+        src = umbrella
+        alt = "Umbrella icon"
+        authorLink = <a href="https://www.flaticon.com/authors/bogdan-rosu">Bogdan Rosu</a>
+    }
+    else if (code >= 600 && code < 700){
+        // snow
+        src = snow
+        alt = "Snow icon"
+        authorLink = <a href="https://www.flaticon.com/authors/freepik">Freepik</a>
+    }
+    else if (code >= 700 && code < 800) {
+        // atmosphere conditions, get from the api
+        src = mist
+        alt = "Mist icon"
+        authorLink = <a href="https://www.flaticon.com/authors/photo3idea-studio">photo3idea-studio</a>
+    } else if (code === 800) {
+        // clear
+        src = sun
+        alt = "Sun icon"
+        authorLink = <a href="https://www.flaticon.com/authors/freepik">Freepik</a>
+    } else if (code > 800 && code <= 804) {
+        // cloudy
+        src = cloud
+        alt = "Cloud icon"
+        authorLink = <a href="https://www.flaticon.com/authors/simpleicon">SimpleIcon</a>
+    }
+    else {
+        // error
+        src = cloud
+        alt = "Cloud icon"
+        authorLink = <a href="https://www.flaticon.com/authors/simpleicon">SimpleIcon</a>
+    }
+    return (
+        <React.Fragment>
+            <img src={src} alt={alt} height="256" width="256"/>
+            <p className="credit">Icon made by {authorLink} from <a href="www.flaticon.com">www.flaticon.com</a></p>
+        </React.Fragment>
+    );
+}
+
 function WeatherMessage(code : number, description : string) : string {
     // weather code logic
     let message : string;
@@ -56,7 +117,6 @@ function WeatherMessage(code : number, description : string) : string {
     return message;
 }
 
-// LOGIC TO GET TEMP MESSAGE
 function TempMessage(temp : number) : string {
     let message : string;
     // <p>The temperature is {props.temp}&deg;C</p>
@@ -70,7 +130,6 @@ function TempMessage(temp : number) : string {
     return message;
 }
 
-// LOGIC TO GET WIND MESSAGE
 function WindMessage(wind : number, isRaining : boolean) {
     // Wind is in m/s, convert to km/h
     const windMetric : number = wind * 3.6;
@@ -101,7 +160,7 @@ function Display(props : IDisplayProps) : any {
     return(
         <div className="results">
             <div className="left">
-                {props.isRaining ? <img src="http://placehold.it/350x350" alt="umbrella" /> : <img src="http://placehold.it/350x350" alt="sun" />}
+                {props.icon}
             </div>
             <div className="right">
                 {props.isRaining ? <p className="big">Yes.</p> : <p className="big">No.</p>}
@@ -126,6 +185,7 @@ class WeatherDisplay extends React.Component<IProps,{}> {
                 city           = {this.props.city}
                 country        = {this.props.country}
                 isRaining      = {this.props.isRaining}
+                icon           = {WeatherIcon(this.props.weatherCode)}
                 weatherMessage = {WeatherMessage(this.props.weatherCode, this.props.description)}
                 tempMessage    = {TempMessage(this.props.temp)}
                 windMessage    = {WindMessage(this.props.wind, this.props.isRaining)}
