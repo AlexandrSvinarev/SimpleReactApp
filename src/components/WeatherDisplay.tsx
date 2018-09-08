@@ -1,4 +1,3 @@
-// tslint:disable:no-console
 import * as React from 'react';
 
 interface IProps {
@@ -61,7 +60,7 @@ class WeatherDisplay extends React.Component<IProps,{}> {
                 condition   = {this.props.condition}
                 description = {this.props.description}
                 temp        = {this.props.temp}
-                wind        = {this.props.wind}
+                wind        = {(this.props.wind * 3.6).toFixed(2)} // convert to km/h
             />
         }
         return (
