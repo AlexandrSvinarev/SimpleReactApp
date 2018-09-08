@@ -10,12 +10,10 @@ interface IState {
   city: string,
   country: string,
   error: string,
-
-  // Weather info:
+  description: string,
   isRaining: boolean,
   temp: number,
-  condition: string,
-  description: string,
+  weatherCode: number;
   wind: number,
 }
 
@@ -24,12 +22,12 @@ class App extends React.Component<{}, IState> {
     super(props)
     this.state = {
       city: "",
-      condition: "",
       country: "",
       description: "",
       error: "",
       isRaining: false,
       temp: 0,
+      weatherCode: 0,
       wind: 0
     }
   }
@@ -56,12 +54,12 @@ class App extends React.Component<{}, IState> {
         const code: number = data.list[0].weather[0].id // use code to see if its raining
         this.setState({
           city: data.city.name,
-          condition: data.list[0].weather[0].main,
           country: data.city.country,
           description: data.list[0].weather[0].description,
           error: "",
           isRaining: code< 600? true : false,
           temp: data.list[0].main.temp,
+          weatherCode: code,
           wind: data.list[0].wind.speed
         })
       }
@@ -84,11 +82,11 @@ class App extends React.Component<{}, IState> {
           <WeatherDisplay
             city        = {this.state.city}
             country     = {this.state.country}
+            description = {this.state.description}
             error       = {this.state.error}
             isRaining   = {this.state.isRaining}
             temp        = {this.state.temp}
-            condition   = {this.state.condition}
-            description = {this.state.description}
+            weatherCode = {this.state.weatherCode}
             wind        = {this.state.wind}
           />
         </div>
