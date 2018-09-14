@@ -78,7 +78,7 @@ function WeatherIcon(code : number) : any {
     return (
         <React.Fragment>
             <img src={src} alt={alt} height="256" width="256"/>
-            <p className="credit">Icon made by {authorLink} from <a href="www.flaticon.com">www.flaticon.com</a></p>
+            <p className="credit">Icon made by {authorLink} from <a href="https://www.flaticon.com">www.flaticon.com</a></p>
         </React.Fragment>
     );
 }
@@ -167,7 +167,7 @@ function Display(props : IDisplayProps) : any {
                 <p>{props.weatherMessage}</p>
                 <p>{props.tempMessage}</p>
                 <p>{props.windMessage}</p>
-                <p>Location used was {props.city && props.city}, {props.country && props.country}</p>
+                <p>Location used was {props.city && props.city}, {props.country && props.country}.</p>
             </div>
         </div>
     );
