@@ -13,12 +13,12 @@ const Search = (props : IProps) => (
                 Do I need an umbrella in
                 <Input
                     className="lineInput"
-                    placeholder="Auckland"
+                    placeholder="City"
                     name="city"
                 />,
                 <Input
                     className="lineInput"
-                    placeholder="New Zealand"
+                    placeholder="Country"
                     name="country"
                 />?
             </label>
