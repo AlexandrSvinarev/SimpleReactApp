@@ -1,3 +1,8 @@
+.sky {
+	/* Trying to fix overflow-y for rain 
+	but it is quite tricky without also getting rid of overflow for main content :(*/
+	overflow: hidden;
+}
 /********************************************************
 ********************  RAINY THEME:**********************
 ********************************************************/
@@ -18,27 +23,37 @@
 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 **/
 
+/* New */
 
 .drop {
 	background:-webkit-gradient(linear,0% 0%,0% 100%, from(rgba(13,52,58,1) ), to(rgba(255,255,255,0.6))  );
 	background: -moz-linear-gradient(top, rgba(13,52,58,1) 0%, rgba(255,255,255,.6) 100%);
 	width:1px;
-	height:89px;
+	height:60px;
 	position: absolute;
 	bottom:200px;
-	-webkit-animation: fall 0.63s linear infinite;
-	-moz-animation: fall 0.63s linear infinite;
+	-webkit-animation: fall 1.5s linear infinite;
+	-moz-animation: fall 1.5s linear infinite;
   }
   
-  /* animate the drops*/
   @-webkit-keyframes fall {
-	  from {margin-top: 0px}
-	  to {margin-top:100vh;}
+	to {margin-top:150vh;}
+  }  @-moz-keyframes fall {
+	0% {
+		transform: translateY(0vh);
+	  }
+	  75% {
+		transform: translateY(90vh);
+	  }
+	  100% {
+		transform: translateY(90vh);
+	  }
   }
-  @-moz-keyframes fall {
-	from {margin-top: 0px}
-	  to {margin-top:100vh;}
+  @keyframes fall {
+	to {margin-top:150vh;}
   }
+ 
+
 
 /********************************************************
 ********************  SUNNY THEME:**********************
