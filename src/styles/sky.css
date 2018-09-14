@@ -1,5 +1,51 @@
+/********************************************************
+********************  RAINY THEME:**********************
+********************************************************/
+.rainy-sky {
+	height: 100vh;
+	background-color: #2c3e50;
+	/* overflow: hidden; */
+}
 /**
-* This CSS effect is originally by Mark Bowley, used under the following copyright license
+* This CSS effect is originally by Aaron Rickle, adapted under the following copyright license:
+*
+* Copyright (c) 2018 by Aaron Rickle (https://codepen.io/arickle/pen/XKjMZY)
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+**/
+
+
+.drop {
+	background:-webkit-gradient(linear,0% 0%,0% 100%, from(rgba(13,52,58,1) ), to(rgba(255,255,255,0.6))  );
+	background: -moz-linear-gradient(top, rgba(13,52,58,1) 0%, rgba(255,255,255,.6) 100%);
+	width:1px;
+	height:89px;
+	position: absolute;
+	bottom:200px;
+	-webkit-animation: fall 0.63s linear infinite;
+	-moz-animation: fall 0.63s linear infinite;
+  }
+  
+  /* animate the drops*/
+  @-webkit-keyframes fall {
+	  from {margin-top: 0px}
+	  to {margin-top:100vh;}
+  }
+  @-moz-keyframes fall {
+	from {margin-top: 0px}
+	  to {margin-top:100vh;}
+  }
+
+/********************************************************
+********************  SUNNY THEME:**********************
+********************************************************/
+
+/**
+* This CSS effect is originally by Mark Bowley, used under the following copyright license:
 *
 * Copyright (c) 2018 by Mark Bowley (https://codepen.io/Mark_Bowley/pen/xEbuI)
 * 
@@ -10,19 +56,8 @@
 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 *
 **/
-.header-sky {
-	/* height: 60vh; */
-	/* light blue */
+.sunny-sky {
 	background-color: #3498db;
-  
-	/* dark blue */
-	/* background-color: #3a539b; */
-  
-	/* very dark blue */
-	/* background-color: #2c3e50; */
-  
-	/* muted blue */
-	/* background-color: #3a539b; */
 }
 
 /* KEYFRAMES */
@@ -110,12 +145,12 @@
 
 .cloud {
 	background: #fff;
-	background: -moz-linear-gradient(top,  #fff 5%, #f1f1f1 100%);
+	background: -moz-linear-gradient(to bottom,  #fff 5%, #f1f1f1 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(5%,#fff), color-stop(100%,#f1f1f1));
-	background: -webkit-linear-gradient(top,  #fff 5%,#f1f1f1 100%);
-	background: -o-linear-gradient(top,  #fff 5%,#f1f1f1 100%);
-	background: -ms-linear-gradient(top,  #fff 5%,#f1f1f1 100%);
-	background: linear-gradient(top,  #fff 5%,#f1f1f1 100%);
+	background: -webkit-linear-gradient(to bottom,  #fff 5%,#f1f1f1 100%);
+	background: -o-linear-gradient(to bottom,  #fff 5%,#f1f1f1 100%);
+	background: -ms-linear-gradient(to bottom,  #fff 5%,#f1f1f1 100%);
+	background: linear-gradient(to bottom,  #fff 5%,#f1f1f1 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#f1f1f1',GradientType=0 );
 	
 	-webkit-border-radius: 100px;

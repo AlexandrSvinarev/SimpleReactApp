@@ -1,33 +1,25 @@
-html {
-	/* green grass background */
-  /* background-color: #87d37c */
-  background-color: #87d37c
-}
 body {
-	overflow-x: hidden;
+  /* Fix for CSS animations causing overflow */
+  /* Does cause a problem with being unable to see content if screen not big enough */
+  overflow: hidden;
 }
 
 .wrapper {
   text-align: center;
   font-size: 20px;
+  height: 100vh;
+}
+
+.rainy {
+  /* Styles for ground on rain if needed */
+	/* background-color: #000; */
+}
+
+.sunny {
+	background-color: #87d37c
 }
 
 /* For header block */
-.header-sky {
-  /* height: 60vh; */
-  /* light blue */
-  background-color: #3498db;
-
-  /* dark blue */
-  /* background-color: #3a539b; */
-
-  /* very dark blue */
-  /* background-color: #2c3e50; */
-
-  /* muted blue */
-  /* background-color: #3a539b; */
-}
-
 .hidden {
   display: none;
 }
@@ -50,15 +42,18 @@ body {
   text-align: center;
   font-size: 30px;
 }
+
 /* Resize MaterialUI components*/
 .lineInput input, .questionButton button {
   font-size: 30px;
 }
+
 .lineInput {
   text-align: center;
   margin-left: 1rem;
   width: 12rem;
 }
+
 .questionButton button {
   margin-top: 2rem;
   text-transform: none;
@@ -69,6 +64,7 @@ body {
   width: 100%;
   margin: 0;
 }
+
 .left {
   float:left;
   width:45%;
@@ -78,11 +74,13 @@ body {
   text-align: right;
   padding: 20px 0;
 }
+
 .left .credit {
   position: absolute;
   bottom: 0;
   left: 1%;
 }
+
 .right {
   float:left;
   width: 49%;
@@ -90,14 +88,17 @@ body {
   overflow:hidden;
   text-align: left;
 }
+
 .big {
   font-size: 500%;
   margin: 0;
 }
+
 .credit {
   color: rgb(189, 195, 199);
   font-size: 10px;
 }
+
 .credit a {
   color: rgb(189, 195, 199);
 }

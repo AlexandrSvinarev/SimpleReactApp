@@ -25,7 +25,7 @@ class App extends React.Component<{}, IState> {
       country: "",
       description: "",
       error: "",
-      isRaining: false,
+      isRaining: true,
       temp: 0,
       weatherCode: 0,
       wind: 0
@@ -75,8 +75,8 @@ class App extends React.Component<{}, IState> {
 
   public render() {
     return (
-      <div className="wrapper">
-        <Header />
+      <div className={"wrapper " + (this.state.isRaining ? "rainy" : "sunny")}>
+        <Header isRaining={this.state.isRaining} />
         <div className="main">
           <Search getWeather={this.getWeather} />
           <WeatherDisplay
