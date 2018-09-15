@@ -39,8 +39,9 @@ class App extends React.Component<{}, IState> {
     const city: string = event.target.elements.city.value;
     const country: string = event.target.elements.country.value;
     if (city && country) {
-      const API_CALL: string = `http://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&APPID=${API_KEY}&units=metric`;
-
+      const API_CALL: string = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&APPID=${API_KEY}&units=metric`;
+      // tslint:disable-next-line:no-console
+      console.log(API_CALL)
       // get weather data
       const call: any = await fetch(API_CALL);
       const data: any = await call.json();
