@@ -1,20 +1,17 @@
-.sky {
-	/* Trying to fix overflow-y for rain 
-	but it is quite tricky without also getting rid of overflow for main content :(*/
-	overflow: hidden;
-}
 /********************************************************
 ********************  RAINY THEME:**********************
 ********************************************************/
+
 .rainy-sky {
 	height: 100vh;
 	background-color: rgb(44,62,80)
-	/* overflow: hidden; */
 }
+
 /**
-* This CSS effect is originally by Aaron Rickle, adapted under the following copyright license:
+* This rain CSS effect is based on CSS rain effects by Jerry Low and raichu26 , adapted under the following copyright license(s):
 *
-* Copyright (c) 2018 by Aaron Rickle (https://codepen.io/arickle/pen/XKjMZY)
+* Copyright (c) 2018 by Jerry Low (https://codepen.io/jerrylow/pen/KaPvNa)
+* Copyright (c) 2018 by raichu26 (https://codepen.io/alemesre/pen/hAxGg)
 *
 * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 *
@@ -22,8 +19,6 @@
 *
 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 **/
-
-/* New */
 
 .drop {
 	background:-webkit-gradient(linear,0% 0%,0% 100%, from(rgba(44,62,80,1) ), to(rgba(255,255,255,0.4))  );
@@ -37,8 +32,42 @@
 	-moz-animation: fall 8s linear infinite;
 	animation: fall 8s linear infinite;
   }
-  
-  @keyframes fall {
+
+@-webkit-keyframes fall {
+	0% {
+		opacity: 1;
+		margin-top: -100px;
+	}
+	50% {
+		opacity: 0.5;
+	}
+	75% {
+		opacity: 0.8;
+	}
+	100% {
+		opacity: 0;
+		margin-top: 200vh;
+	}
+}
+
+@-moz-keyframes fall {
+	0% {
+			opacity: 1;
+			margin-top: -100px;
+	}
+	50% {
+			opacity: 0.5;
+	}
+	75% {
+		opacity: 0.8;
+	}
+	100% {
+		opacity: 0;
+		margin-top: 200vh;
+	}
+}
+
+@keyframes fall {
 	0% {
 		opacity: 1;
 		margin-top: -100px;
@@ -56,7 +85,6 @@
   }
  
 
-
 /********************************************************
 ********************  SUNNY THEME:**********************
 ********************************************************/
@@ -73,11 +101,10 @@
 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 *
 **/
+
 .sunny-sky {
 	background-color: #3498db;
 }
-
-/* KEYFRAMES */
 
 @-webkit-keyframes animateCloud {
     0% {
@@ -106,7 +133,7 @@
     }
 }
 
-/* ANIMATIONS */
+/* CLOUDS */
 
 .x1 {
 	-webkit-animation: animateCloud 35s linear infinite;
@@ -187,7 +214,7 @@
     background: #fff;
 	content: '';
 	position: absolute;
-	z-indeX: -1;
+	z-index: -1;
 }
 
 .cloud:after {
