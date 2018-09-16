@@ -59,11 +59,11 @@ function randRange( minNum : number, maxNum : number) {
 // Get raindrops
 function Raindrops() {
     const raindrops = [];
-	for(let i = 1; i <150; i++) {
+	for(let i = 1; i <200; i++) {
         const dropLeft = randRange(0,2000);
-        const dropTop = randRange(-1000,0);// top: dropTop
-        const delay = randRange(1,3);
-        raindrops.push(<div className="drop" id={"drop" + i.toString()} style={{animationDelay: delay + "s", left: dropLeft, top: dropTop}}/>);
+        const dropTop = randRange(-1000,-200);
+        const delay = randRange(0,6);
+        raindrops.push(<div className="drop" id={"drop" + i.toString()} style={{animationDelay: delay + 's', left: dropLeft, top: dropTop}}/>);
     } 
     return raindrops
 }
