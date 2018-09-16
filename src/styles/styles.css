@@ -1,22 +1,11 @@
 body {
   /* Fix for CSS animations causing overflow */
-  /* Does cause a problem with being unable to see content if screen not big enough */
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .wrapper {
   text-align: center;
   font-size: 20px;
-  height: 100vh;
-}
-
-.rainy {
-  /* Styles for ground on rain if needed */
-	/* background-color: #000; */
-}
-
-.sunny {
-	background-color: #87d37c
 }
 
 /* For header block */

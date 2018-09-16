@@ -1,18 +1,24 @@
 import * as React from 'react';
+import { Helmet } from 'react-helmet';
 import '../styles/sky.css';
+
 interface IProps {
     isRaining : boolean
 }
 
 function Header(props:IProps) {
     let sky;
+    let bgColour : string;
     if(props.isRaining){
         sky = Raindrops();
+        bgColour = "rgb(44,62,80)";
     } else {
         sky = <Clouds />
+        bgColour = "#87d37c";
     }
     return(
         <header className={props.isRaining ? "rainy-sky" : "sunny-sky"}>
+            <Helmet bodyAttributes={{ style: 'background-color : ' + bgColour }} />
             <div className="sky">
                 {sky}
             </div>
@@ -55,8 +61,8 @@ function Raindrops() {
     const raindrops = [];
 	for(let i = 1; i <150; i++) {
         const dropLeft = randRange(0,2000);
-        const dropTop = randRange(-1000,-100);
-        const delay = randRange(0,4);
+        const dropTop = randRange(-1000,0);// top: dropTop
+        const delay = randRange(1,3);
         raindrops.push(<div className="drop" id={"drop" + i.toString()} style={{animationDelay: delay + "s", left: dropLeft, top: dropTop}}/>);
     } 
     return raindrops
