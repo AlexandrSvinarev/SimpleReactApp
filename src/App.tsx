@@ -4,7 +4,7 @@ import Search from './components/Search';
 import WeatherDisplay from './components/WeatherDisplay';
 import './styles/styles.css';
 
-const API_KEY = "a7ab45710f91f90bdb525f3825f7db7f";
+const API_KEY = '1e1efc856851226e132faca6fa01cf81';
 
 interface IState {
   city: string,
@@ -21,14 +21,14 @@ class App extends React.Component<{}, IState> {
   constructor(props: any) {
     super(props)
     this.state = {
-      city: "",
-      country: "",
-      description: "",
-      error: "",
+      city: '',
+      country: '',
+      description: '',
+      error: '',
       isRaining: true,
       temp: 0,
       weatherCode: 0,
-      wind: 0
+      wind: 0,
     }
   }
 
@@ -46,50 +46,39 @@ class App extends React.Component<{}, IState> {
       const call: any = await fetch(API_CALL);
       const data: any = await call.json();
 
-      if (data.cod === "404") {
+      if (data.cod === '404') {
         this.setState({
-          city: "", // lazy fix to clear city
-          error: "Location not found",
+          city: '', // lazy fix to clear city
+          error: 'Location not found',
         })
       } else {
-        const code: number = data.list[0].weather[0].id // use code to see if its raining
+        const code: number = data.list[0].weather[0].id
         this.setState({
           city: data.city.name,
           country: data.city.country,
           description: data.list[0].weather[0].description,
-          error: "",
-          isRaining: code< 600? true : false,
+          error: '',
+          isRaining: code < 600,
           temp: data.list[0].main.temp,
           weatherCode: code,
-          wind: data.list[0].wind.speed
+          wind: data.list[0].wind.speed,
         })
       }
     } else {
       this.setState({
-        city: "", // lazy fix to clear city
-        error: "Please enter a location"
+        city: '',
+        error: 'Please enter a location',
       })
     }
-
-
   }
 
   public render() {
     return (
-      <div className={"wrapper " + (this.state.isRaining ? "rainy" : "sunny")}>
+      <div className={'wrapper ' + (this.state.isRaining ? 'rainy' : 'sunny')}>
         <Header isRaining={this.state.isRaining} />
         <div className="main">
           <Search getWeather={this.getWeather} />
-          <WeatherDisplay
-            city        = {this.state.city}
-            country     = {this.state.country}
-            description = {this.state.description}
-            error       = {this.state.error}
-            isRaining   = {this.state.isRaining}
-            temp        = {this.state.temp}
-            weatherCode = {this.state.weatherCode}
-            wind        = {this.state.wind}
-          />
+          <WeatherDisplay {...this.state} />
         </div>
       </div>
     );
